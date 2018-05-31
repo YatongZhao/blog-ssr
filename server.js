@@ -15,6 +15,7 @@ const serverInfo =
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
 
 const app = express()
+const router = require('./server/router/index.js')
 
 function createRenderer (bundle, options) {
   // https://github.com/vuejs/vue/blob/dev/packages/vue-server-renderer/README.md#why-use-bundlerenderer
@@ -112,12 +113,10 @@ function render (req, res) {
   })
 }
 
+app.use(router)
+
 app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
-})
-
-app.get('/api', (req, res) => {
-  res.send('api ok')
 })
 
 const port = isProd ? 80 : 8080
