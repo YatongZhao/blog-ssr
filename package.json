@@ -4,6 +4,7 @@
   "author": "zyt76 <zyt768295828@163.com>",
   "private": true,
   "scripts": {
+    "test": "node test",
     "dev": "node server",
     "start": "cross-env NODE_ENV=production node server",
     "build": "rimraf dist && npm run build:client && npm run build:server",
