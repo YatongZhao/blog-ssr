@@ -1,6 +1,7 @@
 <template>
   <div>
     hello world
+    hello world
     <router-link to="/list">list</router-link>
   </div>
 </template>
