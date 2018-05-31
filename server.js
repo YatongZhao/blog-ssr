@@ -116,6 +116,10 @@ app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
 
+app.get('/api', (req, res) => {
+  res.send('api ok')
+})
+
 const port = isProd ? 80 : 8080
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
