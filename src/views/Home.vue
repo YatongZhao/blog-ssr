@@ -11,7 +11,7 @@ import axios from 'axios'
 
 export default {
   async asyncData () {
-    let data = axios({
+    let {data} = await axios({
       method: 'get',
       url: 'http://zyt76.com/api/skill.json'
     })
