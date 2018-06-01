@@ -10,12 +10,8 @@
 import axios from 'axios'
 
 export default {
-  async asyncData () {
-    let {data} = await axios({
-      method: 'get',
-      url: 'http://zyt76.com/api/skill.json'
-    })
-    console.log(data)
+  async asyncData ({store, route}) {
+    return store.dispatch('FETCH_HOME')
   }
 }
 </script>
