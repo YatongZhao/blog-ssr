@@ -7,9 +7,15 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  asyncData () {
-    console.log('ok')
+  async asyncData () {
+    let {data} = axios({
+      method: 'get',
+      url: 'http://zyt76.com/api/skill.json'
+    })
+    console.log(data)
   }
 }
 </script>
