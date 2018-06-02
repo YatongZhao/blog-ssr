@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const ctrl = require('../controller/index.js')
+const path = require('path')
+const resolve = file => path.resolve(__dirname, file)
 
 router.use(function (req, res, next) {
   console.log(req.sessionID)
@@ -17,7 +19,7 @@ router.use(function (req, res, next) {
 router.get('/api/skill.json', ctrl.Home)
 router.post('/api/login', ctrl.Login)
 router.get(/^\/manager-system\//, (req, res) => {
-  res.sendFile('../../manager-system/index.html')
+  res.sendFile(resolve('../../manager-system/index.html'))
 })
 
 module.exports = router
