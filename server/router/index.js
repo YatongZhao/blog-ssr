@@ -16,5 +16,8 @@ router.use(function (req, res, next) {
 })
 router.get('/api/skill.json', ctrl.Home)
 router.post('/api/login', ctrl.Login)
+router.get(/^\/manager-system\//, (req, res) => {
+  res.sendFile('../../manager-system/index.html')
+})
 
 module.exports = router
