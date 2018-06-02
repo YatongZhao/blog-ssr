@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../api/index.js'
 import url from '../api/url.js'
 
 export default {
@@ -7,6 +7,6 @@ export default {
       method: 'get',
       url: url.home
     })
-    console.log(data)
+    // console.log(data)
   }
 }

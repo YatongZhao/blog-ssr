@@ -11,7 +11,7 @@ import axios from 'axios'
 
 export default {
   async asyncData ({store, route}) {
-    return store.dispatch('FETCH_HOME')
+    return await store.dispatch('FETCH_HOME')
   }
 }
 </script>

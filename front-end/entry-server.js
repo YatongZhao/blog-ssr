@@ -1,4 +1,5 @@
 import { createApp } from './app'
+import cookieBus from './api/cookieBus.js'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -12,8 +13,12 @@ export default context => {
     const s = isDev && Date.now()
     const { app, router, store } = createApp()
 
-    const { url } = context
+    const { url, cookie } = context
     const { fullPath } = router.resolve(url).route
+
+    // zyt
+    cookieBus.$cookie = cookie
+    console.log(cookieBus.$cookie)
 
     if (fullPath !== url) {
       return reject({ url: fullPath })
