@@ -13,7 +13,6 @@ function Home (req, res) {
 }
 
 function Login (req, res) {
-  // console.log(req.session.isLogin)
   conn.query('select password from user where name=?', req.body.name, (err, results) => {
     if (err) {
       return res.json({
@@ -28,7 +27,7 @@ function Login (req, res) {
       })
     }
     if (results[0].password !== req.body.password) {
-      res.json({
+      return res.json({
         code: -1,
         msg: '密码错误'
       })

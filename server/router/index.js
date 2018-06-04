@@ -7,12 +7,13 @@ const resolve = file => path.resolve(__dirname, file)
 router.use(function (req, res, next) {
   if (
     (
+      /^\/api\/login$/ig.test(req.originalUrl)
+    ) ||
+    (
       /^(\/api\/)/ig.test(req.originalUrl) &&
       req.headers['x-zyt76-uid'] &&
       req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
       req.session.isLogin
-    ) || (
-      /^\/manager-system\/login$/ig.test(req.originalUrl)
     )
   ) {
     next()
@@ -20,6 +21,7 @@ router.use(function (req, res, next) {
     return res.redirect('/manager-system/login')
   }
 })
+
 router.get('/api/skill.json', ctrl.Home)
 router.post('/api/login', ctrl.Login)
 router.get(/^\/manager-system\//, (req, res) => {
