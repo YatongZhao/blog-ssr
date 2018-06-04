@@ -2,6 +2,7 @@ const conn = require('../model/index.js')
 
 function Home (req, res) {
   // console.log(req.session.isLogin)
+  console.log('x-zyt76-uid', req.headers['x-zyt76-uid'])
   conn.query('select * from skill', (err, results) => {
     if (err) {
       console.log(err)
@@ -34,7 +35,7 @@ function Login (req, res) {
     }
     req.session.isLogin = true
     res.json({
-      code: -1,
+      code: 0,
       msg: '登录成功'
     })
   })

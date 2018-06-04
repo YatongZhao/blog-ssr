@@ -13,12 +13,13 @@ export default context => {
     const s = isDev && Date.now()
     const { app, router, store } = createApp()
 
-    const { url, cookie } = context
+    const { url, cookie, cookieObj } = context
     const { fullPath } = router.resolve(url).route
 
     // zyt
     cookieBus.$cookie = cookie
-    console.log(cookieBus.$cookie)
+    cookieBus.$cookieObj = cookieObj
+    // console.log(cookieBus.$cookie)
 
     if (fullPath !== url) {
       return reject({ url: fullPath })

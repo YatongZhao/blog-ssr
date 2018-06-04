@@ -6,11 +6,11 @@ const resolve = file => path.resolve(__dirname, file)
 
 router.use(function (req, res, next) {
   console.log(req.sessionID)
-  // console.log(req.session.isLogin)
   if (
-    /^(\/manager-system\/api\/)/ig.test(req.originalUrl) &&
-    req.headers['X-zyt76-UID'] &&
-    req.headers['X-zyt76-UID'] === req.cookies['connect.sid']
+    /^(\/api\/)/ig.test(req.originalUrl) &&
+    req.headers['x-zyt76-uid'] &&
+    req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
+    req.session.isLogin
   ) {
     console.log('ok')
   }

@@ -5,6 +5,9 @@ const api = axios.create()
 
 export default function (data) {
   if (!data.headers) data.headers = {}
-  data.headers.cookie = cookieBus.$cookie
+  if (cookieBus.$cookie) {
+    data.headers.cookie = cookieBus.$cookie
+    data.headers['x-zyt76-uid'] = cookieBus.$cookieObj['zyt76-uid']
+  }
   return api(data)
 }

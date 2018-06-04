@@ -9,6 +9,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 // const multer = require('multer')
 const session = require('express-session')
+const cookieParser = require('cookie-parser')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -96,12 +97,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
   secret: 'sdaf 223rfcasdl',
+  name: 'zyt76-uid',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 24
+    maxAge: 1000 * 60 * 24,
+    httpOnly: false
   }
 }))
+app.use(cookieParser())
 
 function render (req, res) {
   const s = Date.now()
@@ -125,7 +129,8 @@ function render (req, res) {
   const context = {
     title: 'Vue HN 2.0', // default title
     url: req.url,
-    cookie: req.headers['cookie']
+    cookie: req.headers['cookie'],
+    cookieObj: req.cookies
   }
   // console.log(req.headers)
   renderer.renderToString(context, (err, html) => {
