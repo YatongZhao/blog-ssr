@@ -5,16 +5,20 @@ const path = require('path')
 const resolve = file => path.resolve(__dirname, file)
 
 router.use(function (req, res, next) {
-  console.log(req.sessionID)
   if (
-    /^(\/api\/)/ig.test(req.originalUrl) &&
-    req.headers['x-zyt76-uid'] &&
-    req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
-    req.session.isLogin
+    (
+      /^(\/api\/)/ig.test(req.originalUrl) &&
+      req.headers['x-zyt76-uid'] &&
+      req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
+      req.session.isLogin
+    ) || (
+      /^\/manager-system\/login$/ig.test(req.originalUrl)
+    )
   ) {
-    console.log('ok')
+    next()
+  } else {
+    return res.redirect('/manager-system/login')
   }
-  next()
 })
 router.get('/api/skill.json', ctrl.Home)
 router.post('/api/login', ctrl.Login)
