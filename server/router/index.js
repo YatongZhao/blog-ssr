@@ -5,20 +5,32 @@ const path = require('path')
 const resolve = file => path.resolve(__dirname, file)
 
 router.use(function (req, res, next) {
-  if (
-    (
-      /^\/api\/login$/ig.test(req.originalUrl)
-    ) ||
-    (
-      /^(\/api\/)/ig.test(req.originalUrl) &&
+  if (/^(\/api\/)/ig.test(req.originalUrl)) {
+    if (
+      /^\/api\/login$/ig.test(req.originalUrl) ||
+      (req.headers['x-zyt76-uid'] &&
+      req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
+      req.session.isLogin)
+    ) {
+      next()
+    } else {
+      return res.json({code: -100, msg: '未登录'})
+    }
+  } else if (
+    /^(\/manager-system\/)/ig.test(req.originalUrl) &&
+    !/^(\/manager-system\/login)/ig.test(req.originalUrl)
+  ) {
+    if (
       req.headers['x-zyt76-uid'] &&
       req.headers['x-zyt76-uid'] === req.cookies['zyt76-uid'] &&
       req.session.isLogin
-    )
-  ) {
-    next()
+    ) {
+      next()
+    } else {
+      return res.redirect('/manager-system/login')
+    }
   } else {
-    return res.redirect('/manager-system/login')
+    next()
   }
 })
 
