@@ -16,7 +16,7 @@ module.exports = {
     if (isLogin(req)) {
       next()
     } else {
-      return res.redirect('/manager-system/login')
+      return res.redirect('/manager-system/entry')
     }
   }
 }
