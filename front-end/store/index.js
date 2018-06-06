@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
+      skillList: [],
       activeType: null,
       itemsPerPage: 20,
       items: {/* [id: number]: Item */},

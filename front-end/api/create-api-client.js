@@ -13,8 +13,3 @@ export default async function (data) {
   let result = await api(data)
   return result
 }
-
-// export default axios.create({
-//   xsrfCookieName: 'connect.sid',
-//   xsrfHeaderName: 'X-zyt76-UID'
-// })

@@ -7,6 +7,8 @@ export default {
       method: 'get',
       url: url.home
     })
-    // console.log(data)
+    if (data.code === 0) {
+      commit('RESET_SKILL_LIST', data.data)
+    }
   }
 }

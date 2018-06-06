@@ -1,16 +1,6 @@
 const conn = require('../model/index.js')
-
-function Home (req, res) {
-  // console.log(req.session.isLogin)
-  console.log('x-zyt76-uid', req.headers['x-zyt76-uid'])
-  conn.query('select * from skill', (err, results) => {
-    if (err) {
-      console.log(err)
-      return res.send('连接失败')
-    }
-    res.json(results)
-  })
-}
+const API_PRIVATE = require('./modules/API-private.js')
+const API_PUBLIC = require('./modules/API-public.js')
 
 function Login (req, res) {
   conn.query('select password from user where name=?', req.body.name, (err, results) => {
@@ -41,6 +31,16 @@ function Login (req, res) {
 }
 
 module.exports = {
-  Home,
-  Login
+  Login,
+  public: {
+    skill: {
+      list: API_PUBLIC.skill.list
+    }
+  },
+  private: {
+    skill: {
+      add: API_PRIVATE.skill.add,
+      remove: API_PRIVATE.skill.remove
+    }
+  }
 }
