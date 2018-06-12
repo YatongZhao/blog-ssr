@@ -48,6 +48,14 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: ('[name].[hash:7].[ext]')
+        }
+      },
       ...isProd ? utils.styleLoaders({
         sourceMap: true,
         extract: true,
@@ -56,21 +64,6 @@ module.exports = {
         sourceMap: true,
         usePostCSS: true
       })
-      // {
-      //   test: /\.styl(us)?$/,
-      //   use: isProd
-      //     ? ExtractTextPlugin.extract({
-      //         use: [
-      //           {
-      //             loader: 'css-loader',
-      //             options: { minimize: true }
-      //           },
-      //           'stylus-loader'
-      //         ],
-      //         fallback: 'vue-style-loader'
-      //       })
-      //     : ['vue-style-loader', 'css-loader', 'stylus-loader']
-      // },
     ]
   },
   performance: {
