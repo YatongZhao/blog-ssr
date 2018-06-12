@@ -6,6 +6,16 @@
   </div>
 </template>
 
-<style lang="stylus">
+<script>
+import resize from './util/resize.js'
+
+export default {
+  mounted () {
+    resize(document, window)
+  }
+}
+</script>
+
+<style>
 
 </style>

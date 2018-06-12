@@ -1,8 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const {vueLoaderConfig, ExtractDocs} = require('./vue-loader.conf')
+const utils = require('./utils')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -26,11 +28,12 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          compilerOptions: {
-            preserveWhitespace: false
-          }
-        }
+        options: vueLoaderConfig
+        // options: {
+        //   compilerOptions: {
+        //     preserveWhitespace: false
+        //   }
+        // }
       },
       {
         test: /\.js$/,
@@ -45,21 +48,29 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
-      {
-        test: /\.styl(us)?$/,
-        use: isProd
-          ? ExtractTextPlugin.extract({
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: { minimize: true }
-                },
-                'stylus-loader'
-              ],
-              fallback: 'vue-style-loader'
-            })
-          : ['vue-style-loader', 'css-loader', 'stylus-loader']
-      },
+      ...isProd ? utils.styleLoaders({
+        sourceMap: true,
+        extract: true,
+        usePostCSS: true
+      }) : utils.styleLoaders({
+        sourceMap: true,
+        usePostCSS: true
+      })
+      // {
+      //   test: /\.styl(us)?$/,
+      //   use: isProd
+      //     ? ExtractTextPlugin.extract({
+      //         use: [
+      //           {
+      //             loader: 'css-loader',
+      //             options: { minimize: true }
+      //           },
+      //           'stylus-loader'
+      //         ],
+      //         fallback: 'vue-style-loader'
+      //       })
+      //     : ['vue-style-loader', 'css-loader', 'stylus-loader']
+      // },
     ]
   },
   performance: {
@@ -73,9 +84,11 @@ module.exports = {
           compress: { warnings: false }
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new ExtractTextPlugin({
-          filename: 'common.[chunkhash].css'
-        })
+        // new ExtractTextPlugin({
+        //   filename: 'common.[chunkhash].css'
+        // }),
+        ExtractDocs,
+        utils.ExtractCss
       ]
     : [
         new VueLoaderPlugin(),

@@ -5,6 +5,7 @@ import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
 import VueCookies from 'vue-cookies'
 // import axios from 'axios'
+import './styles/init.css'
 
 Vue.use(VueCookies)
 // Vue.prototype.$http = axios

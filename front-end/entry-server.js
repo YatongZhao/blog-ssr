@@ -19,7 +19,6 @@ export default context => {
     // zyt
     cookieBus.$cookie = cookie
     cookieBus.$cookieObj = cookieObj
-    // console.log(cookieBus.$cookie)
 
     if (fullPath !== url) {
       return reject({ url: fullPath })

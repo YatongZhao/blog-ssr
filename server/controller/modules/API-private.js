@@ -12,7 +12,10 @@ const add = (req, res) => {
     return res.json({
       code: 0,
       msg: 'ok',
-      data: results
+      data: {
+        name: req.body.name,
+        id: results.insertId
+      }
     })
   })
 }
