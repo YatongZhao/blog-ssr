@@ -10,6 +10,9 @@
 import resize from './util/resize.js'
 
 export default {
+  updated () {
+    resize(document, window)
+  },
   mounted () {
     resize(document, window)
   }
