@@ -2,7 +2,9 @@ import Vue from 'vue'
 import 'es6-promise/auto'
 import { createApp } from './app'
 import ProgressBar from './components/ProgressBar.vue'
-import './util/resize.js'
+import resize from './util/resize.js'
+
+resize(document, window)
 
 // global progress bar
 const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()
