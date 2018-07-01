@@ -41,14 +41,14 @@ export default {
 <style lang="stylus">
   .home
     .home-skill_list-item
-      box-shadow 0 -2px 2px rgba(0, 0, 0, .3)
+      box-shadow 0 -2px 2px rgba(0, 0, 0, .1)
       color #fff
     .level-0
-      background-color rgba(255, 0, 0, 1)
-    .level-1
-      background-color rgba(255, 0, 0, .8)
-    .level-2
-      background-color rgba(255, 0, 0, .6)
-    .level-3
       background-color rgba(255, 0, 0, .4)
+    .level-1
+      background-color rgba(255, 0, 0, .6)
+    .level-2
+      background-color rgba(255, 0, 0, .8)
+    .level-3
+      background-color rgba(255, 0, 0, 1)
 </style>
