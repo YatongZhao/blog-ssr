@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <z-header></z-header>
-    <transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
-    </transition>
+    <div class="main">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
     <z-tool></z-tool>
   </div>
 </template>
@@ -20,6 +22,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+.main
+  margin-top 4rem
 </style>

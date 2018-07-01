@@ -2,35 +2,38 @@
   <div class="contanier">
     <header class="header">
       <span class="header_logo">zyt76</span>
-      <span class="icon-menu header_menu"
-        :class="{active: showMenu}"
-        @click="handleMenu"></span>
+      <span class="icon-menu header_menu"></span>
     </header>
-    <div class="header-menu"
-      :class="{active: showMenu}">
-
-    </div>
+    <div class="markdown-body" v-html="hw"></div>
+    <router-link to="/list">list</router-link>
   </div>
 </template>
 
 <script>
+import commonmark from 'commonmark'
 export default {
   data () {
     return {
-      showMenu: false
+      hw: ''
     }
   },
-  methods: {
-    handleMenu () {
-      this.showMenu = !this.showMenu
-    }
+  mounted () {
+    let reader = new commonmark.Parser()
+    let writer = new commonmark.HtmlRenderer({safe: true})
+    let parsed = reader.parse('### Hello ### \n\n > ***world<div>222</div>11*** \n\n > ```function () {<div>222</div>} ddd```')
+    let result = writer.render(parsed)
+    this.hw = result
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.container
-  position relative
+.contanier
+  position fixed
+  left 0
+  top 0
+  width 100%
+  z-index -1
 .header
   background-color: #f60
   color: #fff
@@ -45,16 +48,4 @@ export default {
   display block
   font-size .4rem
   padding .2rem
-  &.active
-    color #fff
-.header-menu
-  border none
-  height 0rem
-  transition all .3s
-  position absolute
-  width 100%
-  background-color #fff
-  &.active
-    border-bottom 1px solid #ccc
-    height 5rem
 </style>
