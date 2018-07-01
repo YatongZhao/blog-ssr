@@ -1,12 +1,14 @@
 <template>
-  <div class="contanier">
-    <header class="header">
-      <span class="header_logo">zyt76</span>
-      <span class="icon-menu header_menu"></span>
-    </header>
-    <div class="desc">
-      <div class="markdown-body" v-html="hw"></div>
-      <router-link to="/list">list</router-link>
+  <div>
+    <div class="brace"></div>
+    <div class="contanier">
+      <header class="header">
+        <span class="header_logo">zyt76</span>
+        <span class="icon-menu header_menu"></span>
+      </header>
+      <div class="desc">
+        <div class="markdown-body" v-html="hw"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +32,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.brace
+  margin-top 2.64rem
 .contanier
   position fixed
   left 0
