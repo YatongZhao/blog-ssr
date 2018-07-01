@@ -1,10 +1,13 @@
 <template>
   <div class="home">
-    <div>hello world</div>
     <div class="markdown-body" v-html="hw"></div>
     <router-link to="/list">list</router-link>
-    <ul>
-      <li v-for="item in skillList" :key="item.id" :class="`level-${item.level}`">{{item.name}}</li>
+    <ul class="home-skill_list">
+      <li
+        v-for="item in skillList"
+        :key="item.id"
+        class="home-skill_list-item"
+        :class="`level-${item.level}`">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -37,6 +40,9 @@ export default {
 
 <style lang="stylus">
   .home
+    .home-skill_list-item
+      box-shadow 0 -2px 2px rgba(0, 0, 0, .3)
+      color #fff
     .level-0
       background-color rgba(255, 0, 0, 1)
     .level-1
