@@ -25,8 +25,9 @@ export default {
   .home
     background-color #0ff
     .home-skill_list-item
-      // box-shadow 0 -2px 2px rgba(0, 0, 0, .05)
-      border-top 1px solid #fff
+      box-shadow 0 -1px 0px #fff
+      padding-bottom 1px
+      // border-bottom 1px solid #fff
       color #fff
     .level-0
       background-color rgba(0, 0, 0, .4)
