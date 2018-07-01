@@ -4,8 +4,10 @@
       <span class="header_logo">zyt76</span>
       <span class="icon-menu header_menu"></span>
     </header>
-    <div class="markdown-body" v-html="hw"></div>
-    <router-link to="/list">list</router-link>
+    <div class="desc">
+      <div class="markdown-body" v-html="hw"></div>
+      <router-link to="/list">list</router-link>
+    </div>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
   mounted () {
     let reader = new commonmark.Parser()
     let writer = new commonmark.HtmlRenderer({safe: true})
-    let parsed = reader.parse('### Hello ### \n\n > ***world<div>222</div>11*** \n\n > ```function () {<div>222</div>} ddd```')
+    let parsed = reader.parse('***Hello, welcome to my blog!*** \n\n > ***email: zyt768295828@163.com*** \n\n > ***github: https://github.com/zyt76***')
     let result = writer.render(parsed)
     this.hw = result
   }
@@ -34,18 +36,26 @@ export default {
   top 0
   width 100%
   z-index -1
+  background-color #f60
 .header
   background-color: #f60
   color: #fff
-  height: .8rem
+  height: .6rem
   display flex
   justify-content space-between
 .header_logo
-  font-size .4rem
-  line-height .8rem
-  padding-left .2rem
+  font-size .5rem
+  line-height .6rem
+  padding-left .05rem
 .header_menu
   display block
-  font-size .4rem
-  padding .2rem
+  font-size .5rem
+  padding .05rem
+.desc
+  // border-top-left-radius 8px
+  // border-top-right-radius 8px
+  // border-left 1px solid #f60
+  // border-right 1px solid #f60
+  background-color #fff
+  height 4rem
 </style>
