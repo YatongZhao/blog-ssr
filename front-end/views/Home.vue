@@ -39,6 +39,7 @@ export default {
   .home
     .home-skill_list
       background-color #0ff
+      font-family "Microsoft YaHei"
     .home-skill_list-item
       box-shadow 0 -1px 0px #fff
       padding-bottom 1px
