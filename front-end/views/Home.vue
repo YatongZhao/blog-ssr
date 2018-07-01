@@ -7,23 +7,38 @@
         class="home-skill_list-item"
         :class="`level-${item.level}`">{{item.name}}</li>
     </ul>
+    <div class="markdown-body" v-html="hw"></div>
   </div>
 </template>
 
 <script>
+import commonmark from 'commonmark'
 export default {
   async asyncData ({store, route}) {
     return await store.dispatch('FETCH_HOME')
   },
+  data () {
+    return {
+      hw: ''
+    }
+  },
   computed: {
     skillList () { return this.$store.state.skillList }
+  },
+  mounted () {
+    let reader = new commonmark.Parser()
+    let writer = new commonmark.HtmlRenderer({safe: true})
+    let parsed = reader.parse('***Thanks for watching!***')
+    let result = writer.render(parsed)
+    this.hw = result
   }
 }
 </script>
 
 <style lang="stylus">
   .home
-    background-color #0ff
+    .home-skill_list
+      background-color #0ff
     .home-skill_list-item
       box-shadow 0 -1px 0px #fff
       padding-bottom 1px

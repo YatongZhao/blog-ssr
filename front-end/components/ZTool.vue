@@ -2,7 +2,6 @@
   <div class="container">
     <div class=""></div>
     <div class="tools"></div>
-    tools
   </div>
 </template>
 
