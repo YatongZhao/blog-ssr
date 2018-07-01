@@ -23,10 +23,10 @@ export default {
 
 <style lang="stylus">
   .home
-    background-color #0f0
+    background-color #0ff
     .home-skill_list-item
       // box-shadow 0 -2px 2px rgba(0, 0, 0, .05)
-      border-bottom 1px solid #fff
+      border-top 1px solid #fff
       color #fff
     .level-0
       background-color rgba(0, 0, 0, .4)

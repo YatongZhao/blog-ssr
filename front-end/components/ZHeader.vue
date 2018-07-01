@@ -33,14 +33,16 @@ export default {
 
 <style lang="stylus" scoped>
 .brace
-  margin-top 2.64rem
+  margin-top 1rem
 .contanier
   position fixed
   left 0
   top 0
   width 100%
-  z-index -1
+  z-index 1
   background-color #f60
+  height 1rem
+  overflow hidden
 .header
   background-color: #f60
   color: #fff
