@@ -7,6 +7,7 @@ import VueCookies from 'vue-cookies'
 // import axios from 'axios'
 import './styles/init.css'
 import './styles/fonts.css'
+import 'github-markdown-css/github-markdown.css'
 
 Vue.use(VueCookies)
 // Vue.prototype.$http = axios
