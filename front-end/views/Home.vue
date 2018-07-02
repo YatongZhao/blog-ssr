@@ -43,6 +43,8 @@ export default {
     .home-skill_list-item
       box-shadow 0 -1px 0px #fff
       padding-bottom 1px
+      height 1.24rem
+      line-height 1.24rem
       // border-bottom 1px solid #fff
       color #fff
     .level-0
