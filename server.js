@@ -151,6 +151,6 @@ app.get('*', isProd ? render : (req, res) => {
 })
 
 const { port } = require('./globalConfig.js')
-app.listen(port, 'zyt76.com', () => {
+app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
 })
